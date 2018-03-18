@@ -1,0 +1,39 @@
+<?php
+    /**
+     * Default production config file for Chiron.  You may override/extend this in your site's configuration file to customize deploy settings.
+     *
+     */
+    return [
+        'assets' => [
+            'use_raw' => false
+        ],
+        'cache' => [
+            'twig' => true
+        ],
+        'debug' => [
+            'twig' => false,
+            'auth' => false,
+            'smtp' => false
+        ],
+        // Slim settings - see http://www.slimframework.com/docs/objects/application.html#slim-default-settings
+        'settings' => [
+            'routerCacheFile' => \Chiron\ROOT_DIR . '/' . \Chiron\APP_DIR_NAME . '/' . \Chiron\CACHE_DIR_NAME . '/' . 'routes.cache',
+            'displayErrorDetails' => false
+        ],
+        'site' => [
+            'analytics' => [
+                'google' => [
+                    'enabled' => true
+                ]
+            ],
+            'debug' => [
+                'ajax' => false,
+                'info' => false
+            ]
+        ],
+        'php' => [
+            'error_reporting'   => null,
+            'log_errors'        => 'true',
+            'display_errors'    => 'false'
+        ]
+    ];

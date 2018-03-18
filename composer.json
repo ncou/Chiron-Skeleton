@@ -1,0 +1,26 @@
+{
+    "name": "chiron/chiron-skeleton",
+    "type": "project",
+    "description": "A pre-configured skeleton for the Chiron microframework",
+    "keywords": ["chiron","skeleton","microframework","rest", "psr7", "api", "router"],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.3",
+        "chiron/chiron": "^0.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-0": { "": "app/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public index.php",
+        "test": "phpunit --colors=always"
+    }
+}
