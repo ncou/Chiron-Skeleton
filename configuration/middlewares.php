@@ -29,22 +29,19 @@ $app->middleware(new Chiron\Middleware\CheckMaintenanceMiddleware());
 $app->middleware(new Chiron\Middleware\MethodOverrideMiddleware());
 
 
-require APP_DIR.'/middlewares/MiddlewareTwo.php';
-require APP_DIR.'/middlewares/MiddlewareThree.php';
-
-$app->middleware(new MiddlewareTwo())->middleware(new MiddlewareTwo());
+$app->middleware(new Middlewares\MiddlewareTwo())->middleware(new Middlewares\MiddlewareTwo());
 
 //------------------ CONTAINER -------------
 $container = $app->getContainer();
 
 $container['MiddlewareThree'] = function ($c) {
-    return new MiddlewareThree();
+    return new Middlewares\MiddlewareThree();
 };
 
 
 $app->middleware('MiddlewareThree');
 
-$app->getNamedRoute('home')->middleware(new MiddlewareOne());
+$app->getNamedRoute('home')->middleware(new Middlewares\MiddlewareOne());
 
 //------------------------------------------
 
