@@ -18,7 +18,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-require __DIR__ . '/../app/defines.php';
+//require __DIR__ . '/../app/defines.php';
 
 
 
