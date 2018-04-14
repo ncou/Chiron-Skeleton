@@ -10,59 +10,10 @@ composer.lock
 # Ignore Composer vendor
 vendor/*
 
+# Ignore coverage & phpunit
 clover.xml
 coveralls-upload.json
 phpunit.xml
 
-
-
 # Ignore personal config files (dev)
 app/.env
-
-
-
-
-# Ignore log, cache, and sessions directories
-app/cache/*
-app/logs/*
-app/sessions/*
-
-# Unignore log, cache, and sessions .gitkeeps
-!app/cache/.gitkeep
-!app/logs/.gitkeep
-!app/sessions/.gitkeep
-
-# Ignore bower vendor assets
-/app/sprinkles/*/assets/vendor/
-
-# Ignore sprinkles.json config file
-app/sprinkles.json
-
-# Ignore sample site sprinkle
-app/sprinkles/site-dev
-
-
-# Ignore node modules
-build/node_modules/*
-
-# Ignore generated bundle schema files
-build/bundle.config.json
-build/bundle.result.json
-
-# Ignore temporary build assets
-build/temp
-
-# Ignore npm-debug.log
-build/npm-debug.log
-
-# Ignore compiled assets
-public/assets/*
-
-# Ignore minified assets (v0.3.x)
-public/js/min/*
-public/css/min/*
-
-# Ignore personal config files (v0.3.x)
-app/config-userfrosting.php
-
-app/database/userfrosting.db
