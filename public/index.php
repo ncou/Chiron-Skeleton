@@ -1,24 +1,52 @@
 <?php
 
 /*
- * Nano v0.1.0
+ * Chiron App Skeleton V0.1
  */
-
-// TODO : créer un fichier "composer.json" qui se chargera de faire un load du fichier defines.php et ensuite des autres classes !!!!
-/*
-"autoload": {
-        "files" : [
-            "app/defines.php"
-        ],
-        "psr-4": {
-            "UserFrosting\\System\\": "app/system/"
-        }
-    }
-    */
 
 require __DIR__ . '/../vendor/autoload.php';
 
 //require __DIR__ . '/../app/defines.php';
+
+
+
+
+
+
+
+
+//https://github.com/zendframework/zf3-web/blob/master/public/index.php
+// Delegate static file requests back to the PHP built-in webserver
+/*
+if (PHP_SAPI === 'cli-server'
+    && is_file(__DIR__ . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH))
+) {
+    return false;
+}
+chdir(dirname(__DIR__));
+require 'vendor/autoload.php';
+*/
+/**
+ * Self-called anonymous function that creates its own scope and keep the global namespace clean.
+ */
+/*
+(function () {
+    // @var \Psr\Container\ContainerInterface $container
+    $container = require 'config/container.php';
+    // @var \Zend\Expressive\Application $app
+    $app = $container->get(\Zend\Expressive\Application::class);
+    // Import programmatic/declarative middleware pipeline and routing
+    // configuration statements
+    require 'config/pipeline.php';
+    require 'config/routes.php';
+    $app->run();
+})();
+*/
+
+
+
+
+
 
 
 
@@ -52,13 +80,12 @@ $app->run();
 
 */
 
-
+// TODO : regarder pour améliorer ici : https://github.com/juliangut/slim-session-middleware/blob/master/src/SessionMiddleware.php
 //https://github.com/dappur/framework/blob/master/public/index.php
 session_start();
 session_set_cookie_params(null, null, null, null, true);
 
-
-
+//https://github.com/juliangut/cacheware/blob/master/src/CacheWare.php#L56
 // Prevent headers from being automatically sent to client
 /*
 ini_set('session.use_trans_sid', false);
@@ -104,13 +131,11 @@ require __DIR__ . '/../app/bootstrap/errors.php';
  */
 //chdir(dirname(__DIR__));
 
+// TODO : à définir dans un fichier de conf !!!!
 //setlocale(LC_TIME, 'fr','fr_FR','fr_FR@euro','fr_FR.utf8','fr-FR','fra');
 setlocale(LC_TIME, ['fr','fr_FR','fr_FR@euro','fr_FR.utf8','fr-FR','fra']);
 
-
-
-
-$base_path = "/chichi/public";
+//$base_path = "/nano5/public";
 //$base_path = realpath(__DIR__.'/../');
 $charset = "UTF-8";
 
@@ -131,73 +156,6 @@ mb_http_output('UTF-8');
 mb_http_input('UTF-8');
 mb_regex_encoding('UTF-8');
 */
-
-/*
-require __DIR__ . '/../core/Interfaces/MiddlewareInterface.php';
-require __DIR__ . '/../core/Interfaces/RequestHandlerInterface.php';
-require __DIR__ . '/../core/Interfaces/StreamInterface.php';
-require __DIR__ . '/../core/Interfaces/UriInterface.php';
-require __DIR__ . '/../core/Interfaces/MessageInterface.php';
-require __DIR__ . '/../core/Interfaces/ResponseInterface.php';
-require __DIR__ . '/../core/Interfaces/RequestInterface.php';
-require __DIR__ . '/../core/Interfaces/ServerRequestInterface.php';
-require __DIR__ . '/../core/Interfaces/ContainerInterface.php';
-require __DIR__ . '/../core/Interfaces/ServerRequestFactoryInterface.php';
-
-require __DIR__ . '/../core/Handlers/HttpExceptionFormatterInterface.php';
-
-require __DIR__ . '/../core/Handlers/Formatter/Json.php';
-require __DIR__ . '/../core/Handlers/Formatter/Xml.php';
-require __DIR__ . '/../core/Handlers/Formatter/Html.php';
-require __DIR__ . '/../core/Handlers/Formatter/Text.php';
-
-require __DIR__ . '/../core/Handlers/FlattenException.php';
-
-require __DIR__ . '/../core/ErrorHandler/AbstractExceptionHandler.php';
-require __DIR__ . '/../core/ErrorHandler/HttpExceptionHandler.php';
-require __DIR__ . '/../core/ErrorHandler/MaintenanceHandler.php';
-
-
-require __DIR__ . '/../core/Interfaces/LoggerInterface.php';
-require __DIR__ . '/../core/Logger/LogLevel.php';
-require __DIR__ . '/../core/Logger/AbstractLogger.php';
-require __DIR__ . '/../core/Logger/Logger.php';
-require __DIR__ . '/../core/Logger/NullLogger.php';
-
-
-require(ROOT_DIR .'/core/autoload.php');
-Autoload::loadClasses(array(
-  ROOT_DIR .'/core/',
-  ROOT_DIR .'/core/Exceptions/',
-  ROOT_DIR .'/core/Mvc/',
-  ROOT_DIR .'/core/Stack/',
-  ROOT_DIR .'/core/Config/',
-  ROOT_DIR .'/core/Middleware/',
-  ROOT_DIR .'/core/Components/',
-  ROOT_DIR .'/core/Routing/',
-  ROOT_DIR .'/core/Http/',
-  ROOT_DIR .'/core/Handlers/',
-  ROOT_DIR .'/core/Handlers/Strategies/',
-  APP_DIR . '/controllers/',
-  APP_DIR . '/middlewares/',
-  APP_DIR . '/helpers/',
-  APP_DIR . '/models/',
-  APP_DIR . '/plugins/',
-  //add your paths here
-));
-
-// TODO : utiliser un autoloader pour éviter d'instancier cette classe
-require(ROOT_DIR .'/core/Components/Container.php');
-require(ROOT_DIR .'/core/Application.php');
-*/
-
-
-
-
-
-
-
-
 
 
 // Start a session
@@ -224,34 +182,31 @@ require(ROOT_DIR .'/core/Application.php');
 //require(ROOT_DIR .'core/routes.php');
 
 
+
+
 //error_reporting(E_USER_ERROR);
 //error_reporting(E_ALL);
 
+// read the credentials from the .env file
+$dotenv = new \Chiron\Utils\DotEnv();
+$dotenv->load(\Chiron\APP_DIR . '/.env');
+
+// TODO : il faut que cette configuration soit effectuée dans le fichier index.php, pas ici !!!!!!
+$loader = new \Utils\FileLoader([\Chiron\CONFIG_DIR . '/settings/default.php', \Chiron\CONFIG_DIR . '/settings/dev.php', \Chiron\CONFIG_DIR . '/settings/down.php']);
+$settings = $loader->load();
 
 // Instantiate the app
 //$settings = require __DIR__ . '/../src/settings.php';
-$app = new \Chiron\Application(['basePath' => $base_path]); //$settings);
-
-// TODO : mieux gérer ce cas ????
-//https://laracasts.com/discuss/channels/general-discussion/laravel-5-maintenance-mode
-//https://github.com/BootstrapCMS/CMS/blob/master/app/Http/Middleware/CheckForMaintenanceMode.php
-//https://github.com/ladybirdweb/momo-email-listener/blob/master/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php
-//https://github.com/jimrubenstein/laravel-framework/blob/master/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php
-/*
-if ($app->isDownForMaintenance())
-{
-    die("We're currently down for maintenance.");
-    //$app->halt("We're currently down for maintenance.", 503, ['Retry-After' => 5 * 60]);
-}*/
-
+//$app = new \Chiron\Application(['basePath' => $base_path]); //$settings);
+$app = new \Chiron\Application($settings);
 
 // Set up dependencies and start session
-require ROOT_DIR . '/config/container.php';
+require \Chiron\CONFIG_DIR . '/container.php';
 // Register routes
-require ROOT_DIR . '/config/routes.php';
+require \Chiron\CONFIG_DIR . '/routes.php';
 //require __DIR__ . '/../src/routes2.php';
 // Set up middlewares
-require ROOT_DIR . '/config/middlewares.php';
+require \Chiron\CONFIG_DIR . '/middlewares.php';
 
 
 // TODO : disabling the errorHandler
@@ -275,6 +230,6 @@ if (!empty($cookie)) {
     $request = $request->withAttribute('isLogged', $isLogged);
 }*/
 
-
 // Run app
-$app->run($request);
+//$app->run($request);
+$app->run();

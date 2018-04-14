@@ -1,18 +1,26 @@
-# Ignores my text editor metadata
-*.komodoproject
-
 # Ignores Mac metadata.  You can configure this globally if you use a Mac: http://islegend.com/development/setting-global-gitignore-mac-windows/
 .DS_Store
+# Ignores my text editor metadata
+.idea
 
-# Ignore developer resources
-_meta/*
+# Ignore composer-generated files
+composer.phar
+composer.lock
+
+# Ignore Composer vendor
+vendor/*
+
+clover.xml
+coveralls-upload.json
+phpunit.xml
+
+
 
 # Ignore personal config files (dev)
 app/.env
 
-# Ignore composer-generated files
-composer.lock
-composer.phar
+
+
 
 # Ignore log, cache, and sessions directories
 app/cache/*
@@ -33,8 +41,6 @@ app/sprinkles.json
 # Ignore sample site sprinkle
 app/sprinkles/site-dev
 
-# Ignore Composer vendor
-app/vendor/*
 
 # Ignore node modules
 build/node_modules/*
