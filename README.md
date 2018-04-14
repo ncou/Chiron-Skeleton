@@ -50,3 +50,10 @@ You can then browse to http://localhost:8080.
 > ```bash
 > $ composer run --timeout=86400 serve
 > ```
+
+### Setup environment variables
+The root directory of your application contain a `.env.example` file used to store the environment variables.
+If you install Chiron via Composer, this file will automatically be renamed to .env. Otherwise, you should rename the file manually.
+
+> This file is ignored by Git so all developers working on the project can have their own configuration.
+> Warning : the .env file should only be used in development/testing/staging environments. For production environments, use "real" environment variables.
