@@ -17,7 +17,7 @@
         ],
         // Slim settings - see http://www.slimframework.com/docs/objects/application.html#slim-default-settings
         'settings' => [
-            'basePath' => '/nano5/public',
+            'basePath' => '',
             'displayErrorDetails' => true
         ],
         'site' => [

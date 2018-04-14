@@ -32,8 +32,10 @@ $app->middleware(new Chiron\Middleware\CheckMaintenanceMiddleware());
 
 $app->middleware(new Chiron\Middleware\MethodOverrideMiddleware());
 
-$app->middleware(new Middlewares\MiddlewareTwo())->middleware(new Middlewares\MiddlewareTwo());
-
+//*****************************************************
+// *****  BONUS : concat the name in the response *****
+$app->middleware(new Middlewares\ConcatNameMiddleware());
+//*****************************************************
 //------------------ CONTAINER -------------
 /*
 $container = $app->getContainer();
@@ -45,11 +47,11 @@ $container['MiddlewareThree'] = function ($c) {
 
 $app->middleware('MiddlewareThree');
 
-$app->getNamedRoute('home')->middleware(new Middlewares\MiddlewareOne());
+$app->->getRouter()->getNamedRoute('home')->middleware(new Middlewares\MiddlewareOne());
 */
 //------------------------------------------
 
-$app->middleware(new Chiron\Middleware\RoutingMiddleware($app));
+$app->middleware(new Chiron\Middleware\RoutingMiddleware($app->getRouter()));
 
 // only parse the body if the route is found (the routingmiddleware will throw exception if route is not found)
 $app->middleware(new Chiron\Middleware\ParsedBodyMiddleware());
