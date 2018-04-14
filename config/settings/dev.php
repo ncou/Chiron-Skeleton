@@ -1,6 +1,6 @@
 <?php
     /**
-     * Default development config file for Chiron. Sets up UserFrosting for easier development.
+     * Default development config file for UserFrosting. Sets up UserFrosting for easier development.
      *
      */
     return [
@@ -17,6 +17,7 @@
         ],
         // Slim settings - see http://www.slimframework.com/docs/objects/application.html#slim-default-settings
         'settings' => [
+            'basePath' => '/nano5/public',
             'displayErrorDetails' => true
         ],
         'site' => [

@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.3",
-        "chiron/chiron": "^0.3",
+        "chiron/chiron": "^0.4",
         "chiron/dotenv": "^0.2",
         "chiron/php-renderer": "^0.2"
     },

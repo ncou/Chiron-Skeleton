@@ -1,6 +1,6 @@
 <?php
     /**
-     * Default production config file for Chiron.  You may override/extend this in your site's configuration file to customize deploy settings.
+     * Default production config file for UserFrosting.  You may override/extend this in your site's configuration file to customize deploy settings.
      *
      */
     return [
@@ -17,7 +17,7 @@
         ],
         // Slim settings - see http://www.slimframework.com/docs/objects/application.html#slim-default-settings
         'settings' => [
-            'routerCacheFile' => \Chiron\ROOT_DIR . '/' . \Chiron\APP_DIR_NAME . '/' . \Chiron\CACHE_DIR_NAME . '/' . 'routes.cache',
+            'routerCacheFile' => \UserFrosting\ROOT_DIR . '/' . \UserFrosting\APP_DIR_NAME . '/' . \UserFrosting\CACHE_DIR_NAME . '/' . 'routes.cache',
             'displayErrorDetails' => false
         ],
         'site' => [
