@@ -55,7 +55,7 @@ $app->run();
 
 //https://github.com/dappur/framework/blob/master/public/index.php
 session_start();
-session_set_cookie_params(null,null,null,null,true); 
+session_set_cookie_params(null, null, null, null, true);
 
 
 
@@ -123,11 +123,13 @@ ini_set('default_mimetype', '');
 
 // Encoding
 ini_set('default_charset', $charset);
-if (extension_loaded('mbstring')) mb_internal_encoding($charset);
+if (extension_loaded('mbstring')) {
+    mb_internal_encoding($charset);
+}
 /*
-mb_http_output('UTF-8'); 
-mb_http_input('UTF-8'); 
-mb_regex_encoding('UTF-8'); 
+mb_http_output('UTF-8');
+mb_http_input('UTF-8');
+mb_regex_encoding('UTF-8');
 */
 
 /*
@@ -199,10 +201,10 @@ require(ROOT_DIR .'/core/Application.php');
 
 
 // Start a session
-//session_start(); 
+//session_start();
 
 // TODO : à mettre ailleur, c'est une config du PHP !!!!!!!!!!
-// PHP settings for DEV or PROD debug mode 
+// PHP settings for DEV or PROD debug mode
 
 //if ($_SERVER['APP_ENVIRONMENT'] == 'DEV') {
 //  ini_set('display_errors', '1');
@@ -244,12 +246,12 @@ if ($app->isDownForMaintenance())
 
 
 // Set up dependencies and start session
-require ROOT_DIR . '/configuration/dependencies.php';
+require ROOT_DIR . '/config/container.php';
 // Register routes
-require ROOT_DIR . '/configuration/routes.php';
+require ROOT_DIR . '/config/routes.php';
 //require __DIR__ . '/../src/routes2.php';
 // Set up middlewares
-require ROOT_DIR . '/configuration/middlewares.php';
+require ROOT_DIR . '/config/middlewares.php';
 
 
 // TODO : disabling the errorHandler
@@ -269,7 +271,7 @@ $cookie = $request->getCookieParam('rememberme');
 if (!empty($cookie)) {
     //$cookie = $request->cookies()->get('rememberme');
     $isLogged = (new UserController($app))->loginWithCookieData2($cookie);
-    
+
     $request = $request->withAttribute('isLogged', $isLogged);
 }*/
 
