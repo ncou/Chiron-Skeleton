@@ -8,7 +8,7 @@
         "php": ">=7.1.3",
         "chiron/chiron": "^0.5",
         "chiron/dotenv": "^0.2",
-        "chiron/php-renderer": "^0.2"
+        "chiron/php-renderer": "^0.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0"
