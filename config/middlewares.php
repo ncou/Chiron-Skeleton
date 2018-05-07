@@ -18,11 +18,11 @@ $logger = new Logger(Chiron\ROOT_DIR.Chiron\DS.Chiron\LOG_DIR_NAME.Chiron\DS.'CH
 $errorHandlerMiddleware = new Chiron\Middleware\ErrorHandlerMiddleware(true);
 
 // default error handler for all the HttpException catched
-$errorHandlerMiddleware->bindExceptionHandler(Throwable::class, new Chiron\Handler\HttpExceptionHandler());
+$errorHandlerMiddleware->bindExceptionHandler(Throwable::class, new Chiron\Handler\Error\HttpExceptionHandler());
 // custom error handler for the maintenance middleware (htt_code = 503)
-$errorHandlerMiddleware->bindExceptionHandler(ServiceUnavailableHttpException::class, new Chiron\Handler\MaintenanceHandler());
+$errorHandlerMiddleware->bindExceptionHandler(ServiceUnavailableHttpException::class, new Chiron\Handler\Error\MaintenanceHandler());
 // custom message when a 404 page not found is throw
-$errorHandlerMiddleware->bindExceptionHandler(NotFoundHttpException::class, new Chiron\Handler\NotFoundHandler());
+$errorHandlerMiddleware->bindExceptionHandler(NotFoundHttpException::class, new Chiron\Handler\Error\NotFoundHandler());
 
 $app->middleware($errorHandlerMiddleware);
 
