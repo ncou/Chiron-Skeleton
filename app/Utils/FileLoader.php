@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Utils;
 
+// TODO : renommer cetter classe en FileAgreggator
 class FileLoader
 {
 
