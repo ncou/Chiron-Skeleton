@@ -4,6 +4,8 @@
 // TODO : regarder pourquoi cela plante ligne 26 si on retire le namespace !!!!
 namespace Chiron;
 
+//define('Chiron\BASE_PATH', '/nano5/public/');
+
 // Some standard defines
 define('Chiron\VERSION', '1.0');
 define('Chiron\DS', '/');
@@ -24,6 +26,7 @@ if (!defined('Chiron\APP_DIR')) {
 // Directories and Paths
 define('Chiron\APP_DIR_NAME', basename(__DIR__));
 define('Chiron\CONFIG_DIR_NAME', 'config');
+define('Chiron\BOOTSTRAP_DIR_NAME', 'bootstrap');
 define('Chiron\CACHE_DIR_NAME', 'cache');
 define('Chiron\LOG_DIR_NAME', 'logs');
 define('Chiron\PUBLIC_DIR_NAME', 'public');
@@ -31,9 +34,10 @@ define('Chiron\TEMPLATES_DIR_NAME', 'templates');
 define('Chiron\VENDOR_DIR_NAME', 'vendor');
 
 // Full path to Composer's vendor directory
-define('Chiron\VENDOR_DIR', APP_DIR . DS . VENDOR_DIR_NAME);
+define('Chiron\VENDOR_DIR', ROOT_DIR . DS . VENDOR_DIR_NAME);
 
 define('Chiron\CONFIG_DIR', ROOT_DIR . DS . CONFIG_DIR_NAME);
+define('Chiron\BOOTSTRAP_DIR', ROOT_DIR . DS . BOOTSTRAP_DIR_NAME);
 define('Chiron\TEMPLATES_DIR', ROOT_DIR . DS . TEMPLATES_DIR_NAME);
 
 /*

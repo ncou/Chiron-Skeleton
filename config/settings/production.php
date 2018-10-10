@@ -10,11 +10,7 @@
         'cache' => [
             'twig' => true
         ],
-        'debug' => [
-            'twig' => false,
-            'auth' => false,
-            'smtp' => false
-        ],
+        'debug' => false,
         // Slim settings - see http://www.slimframework.com/docs/objects/application.html#slim-default-settings
         'settings' => [
             'routerCacheFile' => \UserFrosting\ROOT_DIR . '/' . \UserFrosting\APP_DIR_NAME . '/' . \UserFrosting\CACHE_DIR_NAME . '/' . 'routes.cache',
@@ -30,10 +26,5 @@
                 'ajax' => false,
                 'info' => false
             ]
-        ],
-        'php' => [
-            'error_reporting'   => null,
-            'log_errors'        => 'true',
-            'display_errors'    => 'false'
         ]
     ];

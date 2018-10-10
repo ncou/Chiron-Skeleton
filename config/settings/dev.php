@@ -10,14 +10,11 @@
         'cache' => [
             'twig' => false
         ],
-        'debug' => [
-            'twig' => true,
-            'auth' => true,
-            'smtp' => true
-        ],
+        'debug' => true
+        ,
         // Slim settings - see http://www.slimframework.com/docs/objects/application.html#slim-default-settings
         'settings' => [
-            'basePath' => '',
+            'basePath' => '/',
             'displayErrorDetails' => true
         ],
         'site' => [
@@ -25,10 +22,5 @@
                 'ajax' => true,
                 'info' => true
             ]
-        ],
-        'php' => [
-            'error_reporting'   => E_ALL ^ (E_USER_WARNING | E_NOTICE | E_USER_NOTICE),  // Development - report all errors except Warning & Notice
-            'log_errors'        => 'false',
-            'display_errors'    => 'true'
         ]
     ];

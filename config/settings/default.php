@@ -71,11 +71,8 @@
             'collation' => 'utf8_unicode_ci',
             'prefix'    => ''
         ],
-        'debug' => [
-            'queries' => false,
-            'smtp' => false,
-            'twig' => false
-        ],
+        'debug' => false
+        ,
         'mail'  => [
             // Debug mode will echo connection status alerts to
             // the screen throughout the email sending process.

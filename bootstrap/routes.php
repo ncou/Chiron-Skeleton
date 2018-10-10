@@ -8,6 +8,6 @@ use Psr\Http\Message\ServerRequestInterface;
 // *************
 
 $app->get('/', function (ServerRequestInterface $request) {
-    $controller = new Controllers\HelloController($this);
+    $controller = new Controllers\HelloController();
     return $controller->index($request);
 })->name('home');

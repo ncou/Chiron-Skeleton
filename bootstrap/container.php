@@ -2,6 +2,18 @@
 
 $container = $app->getContainer();
 
+/*
+$container[TemplateRendererInterface::class] = function ($c) {
+    $renderer = new \Chiron\Views\PhpRenderer();
+    $renderer->addPath(\Chiron\TEMPLATES_DIR);
+    return $renderer;
+};*/
+
+
+$container[LoggerInterface::class] = function ($c) {
+    return new Chiron\Logger(Chiron\ROOT_DIR.Chiron\DS.Chiron\LOG_DIR_NAME.Chiron\DS.'CHIRON.log');
+};
+
 $container['mailer'] = function ($c) {
     $config = $c->config;
 

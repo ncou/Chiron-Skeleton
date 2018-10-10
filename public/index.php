@@ -192,7 +192,7 @@ $dotenv = new \Chiron\Utils\DotEnv();
 $dotenv->load(\Chiron\APP_DIR . '/.env');
 
 // TODO : il faut que cette configuration soit effectuée dans le fichier index.php, pas ici !!!!!!
-$loader = new \Utils\FileLoader([\Chiron\CONFIG_DIR . '/settings/default.php', \Chiron\CONFIG_DIR . '/settings/dev.php', \Chiron\CONFIG_DIR . '/settings/down.php']);
+$loader = new \Utils\FileLoader([\Chiron\CONFIG_DIR . '/settings/default.php', \Chiron\CONFIG_DIR . '/settings/dev.php', \Chiron\CONFIG_DIR . '/settings/down.php', \Chiron\CONFIG_DIR . '/settings/security.php']);
 $settings = $loader->load();
 
 // Instantiate the app
@@ -201,12 +201,12 @@ $settings = $loader->load();
 $app = new \Chiron\Application($settings);
 
 // Set up dependencies and start session
-require \Chiron\CONFIG_DIR . '/container.php';
+require \Chiron\BOOTSTRAP_DIR . '/container.php';
 // Register routes
-require \Chiron\CONFIG_DIR . '/routes.php';
+require \Chiron\BOOTSTRAP_DIR . '/routes.php';
 //require __DIR__ . '/../src/routes2.php';
 // Set up middlewares
-require \Chiron\CONFIG_DIR . '/middlewares.php';
+require \Chiron\BOOTSTRAP_DIR . '/middlewares.php';
 
 
 // TODO : disabling the errorHandler
