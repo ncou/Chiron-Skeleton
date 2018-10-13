@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.1.3",
         "chiron/chiron": "^1.2",
-        "chiron/package-discovery": "^0.6",
+        "chiron/package-discovery": "^0.7",
         "chiron/dotenv": "^0.2",
         "chiron/logger": "^0.2",
         "chiron/php-renderer": "^1.4"
