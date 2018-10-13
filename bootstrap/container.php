@@ -1,19 +1,29 @@
 <?php
 
+use Psr\Log\LoggerInterface;
+use Chiron\Views\TemplateRendererInterface;
+use Chiron\PackageDiscovery\PackageDiscoveryServiceProvider;
+
+
 $container = $app->getContainer();
+
+// *** Package Auto Discovery ***
+$container->register(new PackageDiscoveryServiceProvider());
+
 
 /*
 $container[TemplateRendererInterface::class] = function ($c) {
     $renderer = new \Chiron\Views\PhpRenderer();
     $renderer->addPath(\Chiron\TEMPLATES_DIR);
     return $renderer;
-};*/
-
+};
+*/
 
 $container[LoggerInterface::class] = function ($c) {
     return new Chiron\Logger(Chiron\ROOT_DIR.Chiron\DS.Chiron\LOG_DIR_NAME.Chiron\DS.'CHIRON.log');
 };
 
+/*
 $container['mailer'] = function ($c) {
     $config = $c->config;
 
@@ -49,3 +59,4 @@ $container['404notFoundHandler'] = function ($c) {
         return $response;
     };
 };
+*/
